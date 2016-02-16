@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>firefoxの高速化</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2010/08/13/firefox%e3%81%ae%e9%ab%98%e9%80%9f%e5%8c%96/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>firefoxの高速化</h1>
+    <p class="meta">Aug 13, 2010 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>今回の高速化で起動時間やタブの遷移がサクサク動くようになりました。</p>
+
+<!--more-->
+
+<h1 id="span-styletext-decoration-underlinespan"><span style="text-decoration: underline;">アドオンを削除</span></h1>
+
+<p>買い物と同じで様々なアドオンを見ては試す、ただ買い物と違いお金のかからないものが多いのであれもこれもと追加してしまいがちです。でもよくよく考えると使っていないアドオンや機能の重複があったりしませんか？アドオンをもう一度吟味して削除したところだいぶ速くなりました。</p>
+
+<h1 id="span-styletext-decoration-underlinesqlitespan"><span style="text-decoration: underline;">SQLiteのインデックス再作成とバキューム</span></h1>
+
+<p>「SQLite Optimizer」はバキュームしてからインデックスの再作成を行ってくれるアドオンです。</p>
+
+<p>インストール後「ツール」メニューから「アドオン」画面を開き、「SQLite Optimizer」の「設定」で「reindex」と「vacuum」にチェックを入れればokです。
+<a href="https://addons.mozilla.org/ja/firefox/addon/11198/">https://addons.mozilla.org/ja/firefox/addon/11198/</a></p>
+
+<p>「SQLite Manager」というアドオンでも同じことができますが、日々のメンテナンスという点ではoptimizerの方が便利です。optimizerで出来ないことをmanagerでやるといった感じでしょうか。わかってる人向けです。
+<a href="https://addons.mozilla.org/ja/firefox/addon/5817/">https://addons.mozilla.org/ja/firefox/addon/5817/</a></p>
+
+<p>firefoxは、履歴やブックマークなど様々な情報をSQLiteというデータベースで管理しています。windowsのレジストリ肥大化と同じように、長く使い続けるとデータ量が増え動作が遅くなってしまいます。しかし本来データベースは大量データを扱うことを前提としていて、「インデックス」という高速アクセスを実現する仕組みを持っています。通常のデータベース運用は定期的にインデックス再作成(reindex)を行うものですが、どうやらfirefoxはやってくれないようです。なので「SQL Optimizer」のようなアドオンを入れてユーザが自分でデータベースを管理していく必要があります。バキューム(vacuum)はデータベースの不要領域を回収する機能で、ハードディスクでいうデフラグのような機能です。無駄な領域を削除するので高速化を見込めます。<br />
+reindexもvacuumも本来は「高速化」ではなく「低速化」を防ぐ施策ですが、長い間使い続けたfirefox(のプロファイル)では結果的に高速化を図れます。また今後はデータベース由来のパフォーマンス劣化は起きないと考えてokです。</p>
+
+<h1 id="span-styletext-decoration-underlinespan-1"><span style="text-decoration: underline;">その他</span></h1>
+
+<p>現在のfirefox(3.6)はそれなりにパフォーマンス改善に努めています。「firefox 高速化」などと検索すると大概は古い情報で今更なものがあります。例えばキャッシュをメモリ上に展開するという試みがありますが、現在は初期設定でそうなっています。</p>
+
+<p>なので今回紹介した「アドオンを減らす」「データベースのチューニング(というかメンテナンス)」くらいで十分だと思います。ソフトウェアの開発者は現在の主流なマシンスペックを想定したりしますので、古い低スペックなマシンで遅いのはもう仕方がないというか。。</p>
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

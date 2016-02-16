@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>apache2をソースビルドしてインストール</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2012/07/09/apache2%e3%82%92%e3%82%bd%e3%83%bc%e3%82%b9%e3%83%93%e3%83%ab%e3%83%89%e3%81%97%e3%81%a6%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>apache2をソースビルドしてインストール</h1>
+    <p class="meta">Jul 9, 2012 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>apache をソースからインストールしてみました。<br />
+<!--more--></p>
+
+<h1 id="section">まとめ</h1>
+
+<p>apacheのアーカイブをダウンロードして展開しておきます。
+<a href="http://httpd.apache.org/download.cgi">http://httpd.apache.org/download.cgi</a></p>
+
+<p>次に apr と apr-util をダウンロードします。
+<a href="http://apr.apache.org/download.cgi">http://apr.apache.org/download.cgi</a><br />
+それぞれ</p>
+
+<ul>
+  <li>apacheを展開したディレクトリ/srclib/apr</li>
+  <li>apacheを展開したディレクトリ/srclib/apr-util</li>
+</ul>
+
+<p>に展開します。</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># インストールに必要なライブラリなど
+sudo apt-get install gcc build-essential libpcre3-dev
+# 32ビットマシンの人は CC="gcc -m64" を外してください。
+CC="gcc -m64" ./configure --prefix=/usr/apache2みたいなインストールパス --with-included-apr
+make
+make install
+# apache2の起動
+/usr/apache2みたいなインストールパス/bin/apachectl start</pre>
+
+<p>localhost:8080で動いていることを確認できます。</p>
+
+<h1 id="section-1">作業記録</h1>
+
+<pre>$ CC="gcc -m64" ./configure --prefix=/usr/apache2みたいなインストールパス
+checking for APR-util... no</pre>
+
+<p>と怒られました。</p>
+
+<p>aprってなんだろう、、、<br />
+引用:<cite>http://ja.wikipedia.org/wiki/Apache_Portable_Runtime</cite></p>
+
+<blockquote cite="http://ja.wikipedia.org/wiki">
+  <p>
+    Apache Portable Runtime（アパッチ・ポータブル・ランタイム、APR）は、 Apache HTTP Server のサポートライブラリである。 OSとソフトウェアの間でOSなどの環境の違いを吸収するAPIを提供する。そして、他のOSに一般的にある機能が存在しないOSでは、APRが代替を提供する。よって、APRを使うことにより真のクロスプラットフォームなプログラムを作ることが出来る。
+  </p>
+</blockquote>
+
+<p>という大変高名なライブラリ様とのことです。ありがたや。</p>
+
+<p>これもソースからインストールしようかなぁと迷っていたら INSTALL ファイルに「–with-included-apr」というオプションが紹介されており早速試したら</p>
+
+<pre>$ configure: error: Bundled APR requested but not found at ./srclib/. Download and unpack the corresponding apr and apr-util packages to ./srclib/</pre>
+
+<p>ソースをダウンロードして ./srclib/apr/ に展開</p>
+
+<pre>$ CC="gcc -m64" ./configure --prefix=/usr/apache2みたいなインストールパス --with-included-apr
+configure: error: Bundled APR-Util requested but not found at ./srclib/. Download and unpack the corresponding apr and apr-util packages to ./srclib/.</pre>
+
+<p>また怒られました。<br />
+apr-utils? さっきと同じページにあった apr-utils のソースを落としてもう一度試したら今度は</p>
+
+<pre>checking for pcre-config... false</pre>
+
+<p>pcreは「Perl5互換の正規表現のC言語ライブラリ」とのこと(<a href="http://ja.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions">wikipedia</a>)。<br />
+ソース落としてコンパイルする作業が無限に続くように思えて、これは apt-get でインストールしました。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

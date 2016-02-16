@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 11.04 (Natty Narwhal) 64ビット版 と PT2 で地デジ見ました</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2011/05/08/ubuntu-11-04-natty-narwhal-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 11.04 (Natty Narwhal) 64ビット版 と PT2 で地デジ見ました</h1>
+    <p class="meta">May 8, 2011 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>11.04 でも pt2 が動くことを確認しました。やり方は<a href="http://schrott.alteseisen.net/2010/10/24/ubuntu-10-10-maverick-meerkat-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/" title="ubuntu 10.10 (Maverick Meerkat) 64ビット版 と PT2 で地デジ見ました">10.10のとき</a>とほぼ同じで次のとおりです。</p>
+
+<!--more-->
+
+<p><span style="color: #ff0000;">— 2013/04/09 19:21, 追記 —</span><br />
+当ブログのPT2最新記事は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>です。</p>
+
+<p>ubuntu 11.10 (Oneiric Ocelot) は<a href="http://schrott.alteseisen.net/2011/10/16/ubuntu-11-10-oneiric-ocelot-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/" title="ubuntu 11.10 (Oneiric Ocelot) 64ビット版 と PT2 で地デジ見ました">こちらへ</a>。</p>
+
+<h1 style="text-decoration: underline;">
+  1. 私の動作環境
+</h1>
+
+<p>PT2 Rev.A</p>
+
+<p>アンテナケーブル(同軸ケーブル)</p>
+
+<p>カードリーダ(b-casカードを読み込むため。e-tax用にも使えるそうです。)</p>
+
+<h1 style="text-decoration: underline;">
+  2. ドライバなどのインストール
+</h1>
+
+<p>synapticsで10.10のレポジトリを追加しました。<br />
+deb http://jp.archive.ubuntu.com/ubuntu/ maverick main universe</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># 必要なパッケージをインストール
+sudo apt-get install build-essential autoconf libpcsclite-dev  pcsc-tools pcscd
+# 2011/05/08現在、最新版だとスマートカードリーダが正常に動作しないので旧バージョンを
+sudo apt-get install libccid=1.3.11-1 libpcsclite1=1.5.5-3ubuntu2 libpcsclite-dev=1.5.5-3ubuntu2 pcscd=1.5.5-3ubuntu2 pcsc-tools=1.4.16-1
+
+# 作業用の適当なディレクトリ
+PT2_WORK_DIR=hoge`date +%s`
+mkdir ${PT2_WORK_DIR}
+cd ${PT2_WORK_DIR}
+
+# arib25をインストールするため、古い版をダウンロード
+wget http://hg.honeyplanet.jp/pt1/archive/c44e16dbb0e2.tar.bz2
+tar xvf ./c44e16dbb0e2.tar.bz2
+cd pt1-c44e16dbb0e2/arib25/
+make
+sudo make install
+cd ../../
+rm -rf pt1-c44e16dbb0e2/
+
+# 最新版をダウンロード
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar xvf ./tip.tar.bz2
+cd ./pt1-*/driver/
+sudo make install
+cd ../recpt1/
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+cd ../../../
+
+sudo rm -rf ${PT2_WORK_DIR}</pre>
+
+<p>sudo gedit /etc/modprobe.d/blacklist.conf<br />
+で<br />
+最後の行に「blacklist earth-pt1」を追加しましょう。<br />
+再起動して終わりです。</p>
+
+<h1 style="text-decoration: underline;">
+  3. 使い方
+</h1>
+
+<pre class="brush: bash; title: ; notranslate" title=""># チャンネル1を3600秒、hoge.tsに録画
+recpt1 --b25 --strip 1 3600 ./hoge.ts
+# チャンネル1を時間を指定せずにhoge.tsに録画し続ける
+recpt1 --b25 --strip 1 - ./hoge.ts
+# チャンネル1と2を同時に録画する
+recpt1 --b25 --strip 1 --device /dev/pt1video2 1 3600 ./foo.ts
+recpt1 --b25 --strip 1 --device /dev/pt1video3 2 3600 ./bar.ts
+# チャンネル1をudpで飛ばしてvlcで再生
+recpt1 --b25 --udp --addr 192.168.xxx.xxx --port 1234 1 - /dev/null
+vlc udp://@192.168.xxx.xxx:1234</pre>
+
+<h1 style="text-decoration: underline;">
+  4. 補足(pt2 再生できない。。)
+</h1>
+
+<pre class="brush: bash; title: ; notranslate" title="">bcas-&gt;init failed
+Cannot start b25 decoder
+Fall back to encrypted recording</pre>
+
+<p>私の環境ではカードリーダのランプが緑に点灯していました。正常動作では緑に点滅します。また10.10では問題なかったのでスマートカード関連のパッケージをデグレードしたところ正常に動作しました。というのが上記のインストール作業です。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 11.10 (Oneiric Ocelot) 64ビット版 と PT2 で地デジ見ました</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2011/10/16/ubuntu-11-10-oneiric-ocelot-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 11.10 (Oneiric Ocelot) 64ビット版 と PT2 で地デジ見ました</h1>
+    <p class="meta">Oct 16, 2011 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>以前にも書いたような気がしますが、linux標準でdvbというのをサポートしているそうです。なので今回はdvb版の設定というか手順を下記にまとめました。<br />
+<!--more--></p>
+
+<p><span style="color: #ff0000;">— 2013/04/09 19:21, 追記 —</span><br />
+当ブログのPT2最新記事は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>です。</p>
+
+<p>— 2011/10/16 15:52, 追記 —</p>
+
+<h1 id="section">私の環境環境</h1>
+
+<ul>
+  <li>ubuntu 11.10 64 bit (3.0.0-12-generic)</li>
+  <li>PT2 Rev.A</li>
+  <li>分配器</li>
+  <li>アンテナケーブル(同軸ケーブル)5本(壁面から1本、分配器からpt2までに4本)</li>
+  <li>b-casカード(b-cas社に電話して2,000円で借りました</li>
+  <li>カードリーダ(b-casカードを読み込むため。e-tax用にも使えるそうです。)</li>
+  <li><a href="http://schrott.alteseisen.net/2011/10/18/%e4%ba%ba%e7%94%9f%e5%88%9d%e3%81%ae%e7%9c%bc%e9%8f%a1%e3%80%81jins-pc/" title="人生初の眼鏡、jins pc">jins pc</a></li>
+</ul>
+
+<h1 id="section-1">ハードウェアのセットアップ</h1>
+
+<p>パソコンの電源を切り、念のため電源のコンセントも抜き、pt2をマザーボードのpciスロットに刺しました。</p>
+
+<p>次に、b-casカードをカードリーダに差し(ICチップが付いている方を上に)、カードリーダをパソコンのUSBポートにつなぎました。</p>
+
+<p>あとは壁面のtvプラグ(tvコンセント?)とpt2をアンテナケーブルでつなぎました。ケーブルの端子は形状がいくつかあるようなので購入前に壁面のプラグを確認してください。F型が一般的だそうですが、同じF型でもネジ式のものとそうでないものがあります。ちなみにpt2はF型のネジ式端子です。もし壁面プラグがネジ式でなければ</p>
+
+<p>がおすすめです。</p>
+
+<p>購入後に万が一刺さらなければ同軸ケーブルをむき出しにして(カッターでケーブルの表面を切って中の銅色?のケーブルをむき出しにして)、壁面プラグに刺せばokです。むき出しにするのが不安であればビニールテープとかを巻いてしまえばokだと思います。</p>
+
+<h1 id="section-2">ソフトウェアのセットアップ</h1>
+
+<p>dvb版ドライバなどをインストールするために下記を実行しました。<br />
+下記をコピーして保存しおくと便利です。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">#!/bin/bash -x
+
+# 作業用ディレクトリ
+PT2_WORK_DIR=pt2-install-`date +%s`
+mkdir ${PT2_WORK_DIR}
+cd ${PT2_WORK_DIR}
+
+# 必要なパッケージをインストール
+sudo apt-get update 
+sudo apt-get install build-essential autoconf
+# 2011/10/16現在、最新版だとスマートカードリーダが正常に動作しないので旧バージョンを
+MARVERICK_REPOSITORY=&quot;deb http://jp.archive.ubuntu.com/ubuntu/ maverick main universe&quot;
+SOURCES_LIST=/etc/apt/sources.list
+if grep &quot;${MARVERICK_REPOSITORY}&quot; ${SOURCES_LIST}
+then
+	echo 10.10のレポジトリは既に追加されています
+else
+	echo 10.10のレポジトリを追加しました
+	sudo echo $'nn'# marverick japanese repository$'n'${MARVERICK_REPOSITORY} | sudo tee -a ${SOURCES_LIST}
+fi
+sudo apt-get install libccid=1.3.11-1 libpcsclite1=1.5.5-3ubuntu2 libpcsclite-dev=1.5.5-3ubuntu2 pcscd=1.5.5-3ubuntu2 pcsc-tools=1.4.16-1
+
+# tune
+wget http://2sen.dip.jp/cgi-bin/pt1up/source/up0219.gz
+tar xvf ./up0219.gz
+cd ./dvb-pt1-test/
+# チャンネルの設定をしてください。
+# 詳細を今後このページに書くかもしれません。
+# 設定方法は「s2scan」で検索すればわかると思います。
+# 東京の人は変更しなくて良いそうです、羨ましい。
+# vi ./tune.c
+make
+sudo cp ./tune /usr/local/bin/
+cd ../
+
+# tsselect
+wget 
+unzip up0404.zip
+cd ./marumolinuxr3/tsselectv014r2/tsselect/
+make
+sudo cp ./src/tsselect /usr/local/bin/
+cd ../../../
+
+# fuse_b25
+wget http://2sen.dip.jp/cgi-bin/dtvup/source/up0664.zip
+unzip up0664.zip
+cd ./fuse_b25-0.4.8/
+unzip fuse_b25-0.4.8.zip
+cd ./fuse_b25-0.4.8/
+./configure
+make
+sudo make install
+cd ../../
+
+# 作業用ディレクトリを削除
+cd ../
+echo -n &quot;作業ディレクトリを削除しますか? [y]es, or [n]o: &quot;
+read DEL_WORK_DIR
+if [ ${DEL_WORK_DIR} = &quot;y&quot; ]
+then
+	rm -rf ${PT2_WORK_DIR}
+fi</pre>
+
+<p>このタイミングで別件で再起動しましたが、pt2的には不要かもしれません。</p>
+
+<h1 id="section-3">録画</h1>
+
+<p>下記のようにシェルスクリプトを用意して録画しました。</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># 第１引数: アダプタ番号
+# 第2引数: チャンネル番号
+tv-rec.sh 9 1</pre>
+
+<p>tv-rec.sh</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">#!/bin/bash 
+
+function ctrlC() {
+	sudo fusermount -u ${ADAPTER}
+	sudo rmdir ${ADAPTER}
+	exit 2
+}
+
+ADAPTER_NR=${1}
+CHANNEL_ID=${2}
+ADAPTER=/dev/dvb/adapter${ADAPTER_NR}
+
+sudo b25dir ${ADAPTER_NR}
+sudo fuse_b25 ${ADAPTER} -o allow_other
+
+trap ctrlC 2
+
+# usage: tune &quot;adapterの番号&quot; &quot;チャンネル番号&quot;
+sudo tune ${ADAPTER_NR} ${CHANNEL_ID} &amp;amp;
+sudo cat ${ADAPTER}/dvr0 &amp;gt; ./${1}_`date +%s`.ts&lt;</pre>
+
+<p>adapter8〜11とするのが慣例のようですが、pt2を2枚挿している人を想定してのことかもしれませんね。</p>
+
+<p>— 2011/10/16 9:41 —<br />
+以前このブログに書いたキャラクターデバイス版のドライバをインストールしようとするとエラーになってしまいました。<br />
+新しいlinuxカーネルではsmp_lock.hがなくなったためのようです。<br />
+http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=4ba8216cd90560bc402f52076f64d8546e8aefcb<br />
+からダウンロードしてコンパイルしようと思ったのですが、そもそもubuntuをインストールした時点でdvbデバイスとしてpt2を認識していましたので、dvb_pt1 ドライバをインストールしました。<br />
+http://2sen.dip.jp/dtv/</p>
+
+<p>時間をとれたら、このページに改めて詳細を書きます。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

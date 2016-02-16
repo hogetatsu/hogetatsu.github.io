@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 10.10 (Maverick Meerkat) 64ビット版 と PT2 で地デジ見ました</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2010/10/24/ubuntu-10-10-maverick-meerkat-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 10.10 (Maverick Meerkat) 64ビット版 と PT2 で地デジ見ました</h1>
+    <p class="meta">Oct 24, 2010 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>とうとう ubuntu も 10.10 です。ubuntu と linux 関係の開発者の皆様ありがとうございます。<br />
+さてさてミーアキャットちゃんで pt2 が動くかというと。。</p>
+
+<!--more-->
+
+<p><span style="color: #ff0000;">— 2013/04/09 19:21, 追記 —</span><br />
+当ブログのPT2最新記事は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>です。</p>
+
+<p>ubuntu 11.10 (Oneiric Ocelot) は<a href="http://schrott.alteseisen.net/2011/10/16/ubuntu-11-10-oneiric-ocelot-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/" title="ubuntu 11.10 (Oneiric Ocelot) 64ビット版 と PT2 で地デジ見ました">こちらへ</a>。</p>
+
+<h1 id="span-styletext-decoration-underline1-span"><span style="text-decoration: underline;">1. ドライバと録画ソフトをインストール</span></h1>
+
+<p><a href="http://schrott.alteseisen.net/2010/05/02/ubuntu-10-04-ltslucid-lynx%e3%81%a8pt2%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/" title="ubuntu 10.04 LTS(Lucid Lynx)とPT2で地デジ見ました">以前ここに書いた</a>方法(下記リンクをご参照ください)でドライバなどをインストールしました。</p>
+
+<h1 id="span-styletext-decoration-underline2-ubuntu-1010-dvbspan"><span style="text-decoration: underline;">2. ubuntu 10.10からは dvbドライバとの競合を避ける必要がある</span></h1>
+
+<p>ミーアキャットちゃんからはもう1ステップだけ作業が必要です。<br />
+というのは「/etc/modprobe.d/blacklist.conf」に「blacklist earth-pt1」と追記してあげるだけです。<br />
+viとか慣れていない人は</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo gedit /etc/modprobe.d/blacklist.conf</pre>
+
+<p>で、最後の1行に</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">blacklist earth-pt1</pre>
+
+<p>と追記して保存してください。それから再起動したのち、</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">recpt1 --b25 --strip 21 - ./hoge.ts</pre>
+
+<p>としたら見事録画できました。</p>
+
+<h1 id="span-styletext-decoration-underline3-dvbspan"><span style="text-decoration: underline;">3. dvbとは？なんだかワケわからないよ</span></h1>
+
+<p>さて、なぜ10.10からこの作業が必要なのか、ということですが、、<br />
+まず linux 2.6.x は dvbドライバというのを標準で搭載しているそうです。この dvbとは、デジタル放送の国際的な標準規格です。でもこのdvb規格に則ったドライバでは pt2 は動きませんので、専用のドライバと録画ソフト(recpt1)をインストールしました。<br />
+準備完了と思って録画(recpt1)を実行すると、内部的には先程のlinux標準dvbドライバとpt2専用のドライバが競合してしまい、うまくいかないようなのです。そこで、10.10(正確には linux カーネル2.6.x)では pt2 を先ほどの blacklist(対象外リスト)に追記してあげなくてはならない。そういう感じらしいです。<br />
+10.04のときもカーネルは2.6だったような気がするんだけどなぁ、とちょっと不思議ですが。</p>
+
+<p><span style="text-decoration: underline;">pt2をお求めの方へ</span><br />
+私はテレビを見ないのですが、友人に貸出中です。今回も兼ねてからの噂のdvbどうかなぁって検証のために返してもらっただけです。お求めの方、お力になれず申し訳ありません。<br />
+なお、私が購入した際はamazonが最安でした。</p>
+
+<p>参考にさせて頂いたサイト
+<a href="http://d.hatena.ne.jp/korokorokoron/20100807/1281176835">http://d.hatena.ne.jp/korokorokoron/20100807/1281176835</a>
+<a href="http://gedit.blog40.fc2.com/blog-entry-62.html">http://gedit.blog40.fc2.com/blog-entry-62.html</a>
+<a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%83%93%E3%83%87%E3%82%AA%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">http://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%83%93%E3%83%87%E3%82%AA%E3%83%96%E3%83%AD%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A3%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0</a></p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

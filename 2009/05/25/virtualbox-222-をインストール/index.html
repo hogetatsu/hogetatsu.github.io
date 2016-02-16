@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VirtualBox 2.2.2 インストールメモ</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2009/05/25/virtualbox-222-%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>VirtualBox 2.2.2 インストールメモ</h1>
+    <p class="meta">May 25, 2009 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>linux一筋！！と決意した気がしなくもないけど、<br />
+VirtualBox 2.2.2をubuntuにインストールして、ゲストosはwindows xp。<br />
+銀行やら会社やらがとってもwindowsを求めてくるので一応ね。<br />
+<!--more--></p>
+
+<h1 id="os">ゲストosのインストールまで</h1>
+
+<p><a href="http://www.virtualbox.org/" title="http://www.virtualbox.org/">virtualbox.org</a>からubuntu用のdebパッケージをダウンロードしてダブルクリック。<br />
+仮想マシン作って、ハードディスクのイメージ作って、あとは適当に設定してみた。<br />
+ネットワークは「PCnet-FAST III (NAT)」を選んだ。<br />
+xpのインストールディスクを入れて仮想マシンを起動してインストール。<br />
+起動したら音が鳴った。すげぇ。usbでつながってるデバイス認識してるし。。</p>
+
+<h1 id="guest-additions">Guest Additions</h1>
+
+<p>仮想マシンのxpを起動後<br />
+「デバイス」-&gt;「Guest Additions のインストール」<br />
+でxpのcd-romドライブに何やらcdが挿入されたことになってる。。<br />
+それっぽい名前のexeファイルを実行してインストールしたら<br />
+VirtualBoxがものすごく使いやすくなった。</p>
+
+<h1 id="section">ポートフォワーディング</h1>
+
+<p>linux初心者なんでとりあえずwindowsでhttpサーバ立てようってことで頑張ってみた。<br />
+なんぼルータでポートフォワードの設定してもダメだった。。<br />
+そりゃそうだ、実マシン(ubuntu)には転送するように<br />
+ルータを設定しただけで仮想マシンのxpに転送されたら気持ち悪い。<br />
+マニュアルとか読んでたら次のコマンド3つでokみたい。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">VBoxManage setextradata 仮想マシン名 "VBoxInternal/Devices/pcnet/0/LUN#0/Config/適当な名前/Protocol" プロトコル名
+VBoxManage setextradata 仮想マシン名 "VBoxInternal/Devices/pcnet/0/LUN#0/Config/適当な名前/GuestPort" ゲストosでのポート番号
+VBoxManage setextradata 仮想マシン名 "VBoxInternal/Devices/pcnet/0/LUN#0/Config/適当な名前/HostPort" ホストosでのポート番号
+</pre>
+
+<p>「0/LUN#0」が何を表しているのかよくわからなかったけど、<br />
+とりあえずうまくフォワードできた。</p>
+
+<h1 id="section-1">共有ファイル</h1>
+
+<p>「デバイス」-&gt;「共有フォルダ」で共有したいディレクトリを設定。<br />
+xp(仮想マシン)側のコマンドプロンプトで</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">net use ドライブレター \vboxsvr共有フォルダ名
+</pre>
+
+<p>で終わり。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

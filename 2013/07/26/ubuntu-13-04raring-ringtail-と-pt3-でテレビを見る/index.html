@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ubuntu と PT3 でテレビを見る</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2013/07/26/ubuntu-13-04raring-ringtail-%e3%81%a8-pt3-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Ubuntu と PT3 でテレビを見る</h1>
+    <p class="meta">Jul 26, 2013 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>pt3の設定方法です。<br />
+<!--more--></p>
+
+<h1 id="section">履歴</h1>
+
+<p><u>2015/06/28</u><br />
+Ubuntu 15.04(Vivid Vervet)で動作しました。<br />
+<u>2014/10/25</u><br />
+14.10(Utopic Unicorn)で動作しました。<br />
+<u>2014/04/29</u><br />
+14.04(Trusty Tahr)で動作しました。<br />
+<u>2013/10/19</u><br />
+13.04(Raring Ringtail)用に書いた記事ですが、13.10(Saucy Salamander)でも動作確認済みです。</p>
+
+<h1 id="section-1">ハードウェアのセットアップ</h1>
+
+<p>詳しくは<a href="http://schrott.alteseisen.net/2012/06/10/ubuntu-12-04-precise-pangolin-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/" title="ubuntu 12.04 (Precise Pangolin) 64ビット版 と PT2 で地デジ見ました。">こちら</a>を。PT2の記事ですが、スロットがpciかpci expressかの違いで後はほぼ同じです。</p>
+
+<h1 id="section-2">ソフトウェアのセットアップ</h1>
+
+<p>下記スクリプトを実行後、再起動してください。<br />
+カードリーダー(NTT-ME SCR3310-NTTCom)はLEDが点灯しっぱなしは失敗、点滅していれば成功です。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">#!/bin/sh
+
+# recpt3 installer for ubuntu
+# author: hogetatsu
+# website: http://schrott.alteseisen.net/
+
+# arib25のブランチ
+ARIB25_BRANCH=ec7c87854f2f
+# 原罪のディレクトリ
+CURRENT_DIR=`pwd`
+# 作業ディレクトリ
+WORK_DIR=$CURRENT_DIR/pt3_`date +%s`
+mkdir $WORK_DIR
+cd $WORK_DIR
+
+# インストールに必要なパッケージ
+sudo apt-get -y install git pkg-config unzip autoconf build-essential linux-headers-`uname -r`
+
+# カードリーダを動かすためのパッケージ
+sudo apt-get -y install libccid libpcsclite1 libpcsclite-dev pcsc-tools pcscd
+sudo /etc/init.d/pcscd restart
+
+# ドライバのインストール
+sudo echo "blacklist earth-pt3" &gt;&gt; /etc/modprobe.d/blacklist.conf
+git clone https://github.com/m-tsudo/pt3.git
+cd ./pt3
+make
+sudo make install
+
+# スリープから復帰後に cannot specified channel になるのを防ぎます
+SLEEP_MODULE_FILE=/etc/pm/config.d/00sleep_module
+SLEEP_MODULE_VALUE='SUSPEND_MODULES="pt3_drv"'
+# ファイルがないと tee できないので
+sudo touch $SLEEP_MODULE_FILE
+if ! grep $SLEEP_MODULE_VALUE $SLEEP_MODULE_FILE; then
+	echo $SLEEP_MODULE_VALUE | sudo tee -a $SLEEP_MODULE_FILE
+fi
+
+# arib25
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/${ARIB25_BRANCH}.zip
+unzip ${ARIB25_BRANCH}.zip
+cd pt1-${ARIB25_BRANCH}/arib25/src
+make
+sudo make install
+
+# recpt1(録画ソフトウェア)
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar jxf tip.tar.bz2
+cd `ls -tr | tail -1`/recpt1
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+
+# 作業ディレクトリを削除
+cd $CURRENT_DIR
+echo -n "作業ディレクトリを削除しますか? [y]es, or [n]o: "
+read DEL_WORK_DIR
+if [ ${DEL_WORK_DIR} = "y" ]; then
+    rm -rf ${WORK_DIR}
+fi
+</pre>
+
+<h1 id="section-3">録画と再生</h1>
+
+<p>視聴したいチャンネル番号を<a href="http://www.maspro.co.jp/contact/bro/bro_ch.html">マスプロ電工さん</a>のサイトで調べておきましょう。</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># 札幌でNHK総合(チャンネル15)を hoge.ts として30秒録画する例です
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 30 ./hoge.ts
+# 録画時間を指定しない
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 - ./hoge.ts
+
+# vlcメディアプレイヤーで手軽にリアルタイム視聴
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 - - | cvlc -
+
+# udp配信
+recpt1 --b25 --strip --udp --addr localhost --port 1234 --device /dev/pt3video2 --sid hd 15 - /dev/null
+# udp配信しつつ録画
+recpt1 --b25 --strip --udp --addr localhost --port 1234 --device /dev/pt3video2 --sid hd 15 - ./hoge.ts
+</pre>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

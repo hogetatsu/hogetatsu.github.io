@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 9.10 64bit版のインストール</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2010/02/22/ubuntu-9-10-64bit%e7%89%88%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 9.10 64bit版のインストール</h1>
+    <p class="meta">Feb 22, 2010 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>ubuntu 9.10 64bit版をインストールしてみました。</p>
+
+<!--more-->
+
+<h1 id="span-styletext-decoration-underlinespan"><span style="text-decoration: underline;">動機</span></h1>
+
+<p>なんとなくです。</p>
+
+<h1 id="span-styletext-decoration-underlinespan-1"><span style="text-decoration: underline;">必要な物</span></h1>
+
+<ul>
+  <li>osをインストールする時間的な余裕</li>
+  <li>32bit版の方がユーザが多いという認識</li>
+  <li>64bitのosに対応したハードウェア一式</li>
+  <li>インストールディスクとcdドライブ(or dvdドライブ)<br />
+「<a href="http://www.ubuntulinux.jp/products/JA-Localized/download">cdイメージのダウンロードページ</a>」には64ビット版がなかったので、「<a href="http://www.ubuntulinux.jp/products/JapaneseMirrors">日本国内のダウンロードサイト</a>」からたどっていき、例えば「<a href="http://www.ftp.ne.jp/Linux/packages/ubuntu/releases-cd/">kddi研究所</a>」とかから「ubuntu-9.10-desktop-amd64.iso」をダウンロードします。「amd64」となっていますが、intelのcpuでもこれでok。逆に32bit版はintelでもamdでも同じ「x86」のイメージファイルを使用します。</li>
+</ul>
+
+<h1 id="span-styletext-decoration-underlineubuntu-910-64span"><span style="text-decoration: underline;">ubuntu 9.10 64ビット版のインストール作業</span></h1>
+
+<p>32bit版となにも変わらない。<br />
+パーティションの設定は慎重に。誤ってフォーマットしても後には戻れません。特に私の場合は「別osのパーティション」と「/homeのパーティション」はマウントするだけ。フォーマットすると1週間くらい仕事を休みたくなります。。<br />
+たぶん一般的なテクニックだと思うのですが「/home」を割り当てるだけのパーティションを作ることをおすすめします。ホームディレクトリにはさまざまなデータファイル(音楽やら動画やら)だけでなく、様々なソフトウェアの設定ファイルが保存されています。なので「/home」専用のパーティションを切って、os再インストール時にはフォーマットせずにマウントだけすれば、データファイルと各種ソフトウェア設定ファイルのバックアップ/リストア作業から解放されます。</p>
+
+<h1 id="span-styletext-decoration-underlinespan-2"><span style="text-decoration: underline;">各種ソフトウェアのインストール</span></h1>
+
+<p>32bit版と同じようにsynapticsからあれこれインストール。アプリケーションの設定は先述のとおりほぼ不要でした。特にブラウザの設定はかなりいじっていたので助かりました。<br />
+グラフィックボード(ビデオカード?vga?)のプロプライエタリなドライバをインストールして再起動。</p>
+
+<h1 id="span-styletext-decoration-underline64br--span"><span style="text-decoration: underline;">64ビット版の注意事項<br /> </span></h1>
+
+<ul>
+  <li>64bit版のadobe flash player<br />
+youtubeを見ようとしたらいきなり爆音。ご近所さんへ心の中で謝りつつ音量を下げようにも下がらず焦りました。しかたなくシステム音量を下げて対応。。どうやらyoutubeに限らず多くのflashコンテンツが再生はできるものの、ボタンを押しても反応しないようです。そこで一旦synapticsで「flash-player」をアンインストールした後、「<a href="http://labs.adobe.com/downloads/flashplayer10_64bit.html" title="http://labs.adobe.com/downloads/flashplayer10_64bit.html">flash player 10 for 64-bit linux</a>」をダウンロード。tarボールを展開すると「libflashplayer.so」ってのがあったのでおもむろに「/usr/lib/firefox/plugins」へコピーしてfirefoxを再起動したらきちんと動作しました。ただし64bitのosで動く32bitブラウザには対応しているけど、64bitブラウザには対応していないとのこと(<a href="http://kb2.adobe.com/jp/cps/230/230463.html" title="http://kb2.adobe.com/jp/cps/230/230463.html">http://kb2.adobe.com/jp/cps/230/230463.html</a>)</li>
+  <li>「ia32-libs」インストールすると32bit版のバイナリを実行できるようになるという記事を見つけたけど、既にインストール済みでした。</li>
+  <li>その他は特に問題なく動いています(まだ2時間くらいしか使ってないけど)</li>
+</ul>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 10.04 LTS(Lucid Lynx)とPT2で地デジ見ました</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2010/05/02/ubuntu-10-04-ltslucid-lynx%e3%81%a8pt2%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 10.04 LTS(Lucid Lynx)とPT2で地デジ見ました</h1>
+    <p class="meta">May 2, 2010 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>lynxが4月29日にリリースされたのでさっそくインストールしました。とうとうlinuxで音楽のダウンロード購入ができる時代がやって来ました。他にもtwitterとかのsns的なサービスとの連携やらクラウドな感じです。一般的なパソコン利用者がwindowsからubuntuに乗り換えるシーンが見えつつあるのではないでしょうか。起動速度も速くなったそうですが、私は帰宅したらpcの電源入れてトイレ行ったりするのであまり旨味がありません。でもubuntuは着々と進化しています。</p>
+
+<!--more-->
+
+<p><span style="color: #ff0000;">— 2013/04/09 19:21, 追記 —</span><br />
+当ブログのPT2最新記事は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>です。</p>
+
+<p>ubuntu 11.10 (Oneiric Ocelot) は<a href="http://schrott.alteseisen.net/2011/10/16/ubuntu-11-10-oneiric-ocelot-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f/" title="ubuntu 11.10 (Oneiric Ocelot) 64ビット版 と PT2 で地デジ見ました">こちらへ</a>。</p>
+
+<p>新しいubuntuの良し悪しは様々なサイトにポストされているので私はpt2を。というのも知人からpt2が動かなくなった！と相談を受けたから、、、ですが、結論から言うと動きました。</p>
+
+<p>インストール作業自体は「9.10(Karmic Koala)」のときとまったく同じですが、<a href="http://schrott.alteseisen.net/2010/03/31/ubuntu%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e3%82%92%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9fpt2/" title="ubuntuで地デジを見ました(PT2)">以前紹介した方法</a>に不足があるので、今回はその訂正版です。</p>
+
+<p>環境</p>
+
+<ul>
+  <li>ubuntu 9.10 64 bit (linux 2.6.31-20-generic)</li>
+  <li>
+    <p>PT2 Rev.A</p>
+  </li>
+  <li>
+    <p>アンテナケーブル(同軸ケーブル)</p>
+  </li>
+  <li>b-casカード(b-cas社に電話して2,000円で借りました)</li>
+  <li>カードリーダ(b-casカードを読み込むため。e-tax用にも使えるそうです。)</li>
+</ul>
+
+<h1 id="section">ハードウェアのセットアップ</h1>
+
+<p>パソコンの電源を切り、念のため電源のコンセントも抜き、pt2をマザーボードのpciスロットに刺しました。</p>
+
+<p>次に、b-casカードをカードリーダに差し(ICチップが付いている方を上に)、カードリーダをパソコンのUSBポートにつなぎました。</p>
+
+<p>あとは壁面のtvプラグ(tvコンセント?)とpt2をアンテナケーブルでつなぎました。ケーブルの端子は形状がいくつかあるようなので購入前に壁面のプラグを確認してください。F型が一般的だそうですが、同じF型でもネジ式のものとそうでないものがあります。ちなみにpt2はF型のネジ式端子です。もし壁面プラグがネジ式でなければ</p>
+
+<p>がおすすめです。</p>
+
+<p>購入後に万が一刺さらなければ同軸ケーブルをむき出しにして(カッターでケーブルの表面を切って中の銅色?のケーブルをむき出しにして)、壁面プラグに刺せばokです。むき出しにするのが不安であればビニールテープとかを巻いてしまえばokでしょうか?</p>
+
+<h1 id="section-1">ソフトウェアのセットアップ</h1>
+
+<p>ドライバや録画用ソフトをインストールします。その際に必要なライブラリを先にsynapticsでインストールしておくと楽です。</p>
+
+<pre>libpcsclite-dev
+linux-headers
+build-essential
+autoconf
+pcsc-tools(カードリーダを利用するために必要)
+pcscd(同じくカードリーダのため。不要かもしれませんが念のため)</pre>
+
+<p>b25というソフトがデジタル放送のスクランブルを復号化してくれるそうです(ということは、b25がないと映像が見れない?)。最新のドライバはb25を含んでいないそうなのでいろいろ探したら<a href="http://hg.honeyplanet.jp/pt1">http://hg.honeyplanet.jp/pt1</a>のchangeset c44e16dbb0e2にあった(「hg no longer accepts ‘#’ in a template」をクリックして、左のzipとかbz2をクリックしてダウンロード)。展開して、</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">cd ./arib25
+make
+sudo make install</pre>
+
+<p>最新のドライバをダウンロード(<a href="http://hg.honeyplanet.jp/pt1">http://hg.honeyplanet.jp/pt1</a>を開いて左側のzipとかbz2)して、展開。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">cd ./driver/
+sudo make install</pre>
+
+<p>lsmodで「pt1_drv」と出てきたらokっぽい。pt1_drvと出ますが、pt2がきちんと動きます。</p>
+
+<p>最後に録画ソフトのインストールです。</p>
+
+<p>先ほどのドライバのアーカイブにある「recpt1」ディレクトリに移動。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">cd ./recpt1
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install</pre>
+
+<p>これで終わりです。私の環境ではコンパイルエラーは出ず、すんなりいきました。</p>
+
+<h1 id="section-2">録画して再生してみる</h1>
+
+<p>さきほど作った「recpt1」をさっそく使います。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">recpt1 --b25 --strip 25 3600 hoge.ts</pre>
+
+<p>ヘルプ(recpt1 –help)を見ると「–b25」オプションは「b-casを使って復号化する」と書いてあるので、逆にこのオプションを指定しなければ再生できないっぽいです。</p>
+
+<p>上記の第3引数「25」はtvのチャンネルです。先ほどの展開(解凍)したアーカイブの「recpt1/channels/」にチャンネルのリストが入っていました。</p>
+
+<p>第4引数「3600」は録画時間のようで、第5引数「hoge.ts」は出力ファイルです。</p>
+
+<p>録画ではなく再生しただけの場合は、</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">recpt1 --b25  --udp --addr 192.168.xxx.xxx --port 1234 25 - /dev/null</pre>
+
+<p>とするといいと思います。recpt1は標準でudpで飛ばせる優れものです。</p>
+
+<p>vlcメディアプレイヤーの場合、「メディア」-&gt;「ネットワークストリームを開く」で先ほどのipアドレス(192.168.xxx.xxx)とポート(1234)を指定すると再生できます。</p>
+
+<p>動画がカクカクしたり途切れる場合は、同じく「ネットワークストリームを開く」の画面の「拡張オプション」で「キャッシュ時間」を増やしてあげれば良いと思います。キャッシュ時間は増やした分だけ遅延しますが、地デジはtvで見ても数秒遅れる仕様なので今更です。地震予測のアラートは地デジじゃ意味ないのかな？！</p>
+
+<p>そんな感じで動きました。</p>
+
+<p>tvはあまり見ないのでpt2欲しい人を探しているのですが、なかなか見つからず、ネットオークションも未だに抵抗があるので。。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

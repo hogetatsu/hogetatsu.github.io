@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>nlite で windows xp のインストールディスクをすっきり！！</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2011/04/03/nlite-%e3%81%a7-windows-xp-%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%83%87%e3%82%a3%e3%82%b9%e3%82%af%e3%82%92%e3%81%99%e3%81%a3%e3%81%8d%e3%82%8a%ef%bc%81%ef%bc%81/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>nlite で windows xp のインストールディスクをすっきり！！</h1>
+    <p class="meta">Apr 3, 2011 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>いまさらながら、というか windows xp アップデートも少なくなってきた今だから？ nlite を使ってサービスパック3(SP3)やらhotfixを当てた状態のインストールディスクを作りました。</p>
+
+<!--more-->
+
+<h1 id="windows-updates-downloaderwud1"><a href="http://www.windowsupdatesdownloader.com/">1. windows updates downloader(wud)</a></h1>
+
+<p>まず最初に wud を使ってservice pack や hotfix をまとめてダウンロードします。microsoft のダウンロードセンターでひとつずつ落とす作業を楽させてくれます。<br />
+<a href="http://www.windowsupdatesdownloader.com/">wud</a> を <a href="http://www.windowsupdatesdownloader.com/ProgramFiles.aspx">こちら</a> から落としてインストール。<br />
+<a href="http://www.windowsupdatesdownloader.com/UpdateLists.aspx">こちらのページ</a>で japanese を選択して 日本語版の sp や hotfix のリストを落として実行。</p>
+
+<h1 id="nlite4"><a href="http://www.nliteos.com/">2. nlite</a></h1>
+
+<p><a href="http://www.nliteos.com/">nlite</a> を<a href="http://www.nliteos.com/download.html">こちらのページ</a> から落としてインストール。<br />
+いよいよインストールディスクイメージの作成ですが、基本的に <a href="http://orange.zero.jp/angel.omega/nLite.htm">こちら</a> が詳しいです。基本的に次へ次へを押して進めますが、以下2点を注意しました。</p>
+
+<ul>
+  <li>ホットフィックスを選択しあとは必ず日時でソート</li>
+  <li>コンポーネントの削除でキーボードをすべて削除</li>
+</ul>
+
+<h1 id="span-styletext-decoration-underline3-windows--txtsetupsif-span"><span style="text-decoration: underline;">3. windows インストール時に txtsetup.sif でエラー</span></h1>
+
+<p>インストールディスク読み込み時に<br />
+<code>INI file 386txtsetup.sif is invalid</code><br />
+と出ました。txtsetup.sif をテキストエディタで開いて、エラー行の少し上を見るとキーボードの設定であることがわかりました。エラー行のあたりを眺めてるとダブルコーテーションついてる行とそうでない行があることに気づき、あぁなるほどな、と。でもisoファイルを直接編集する手段を知らないので、nliteのコンポーネント設定時にキーボードをすべて削除してみました。すると txtsetup.sif のエラーはなくなりましたが、windows インストール時に kbdbe.dll が見つからないと言われたので、エスケープキー を押しっぱなしにして逃げました。</p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 12.04 (Precise Pangolin) 64ビット版 と PT2 で地デジ見ました。</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2012/06/10/ubuntu-12-04-precise-pangolin-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 12.04 (Precise Pangolin) 64ビット版 と PT2 で地デジ見ました。</h1>
+    <p class="meta">Jun 10, 2012 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>前バージョンと同様にdvb版を利用しようと思いましたが、recpt1が更新されていたので今回はこちらをインストールします。<br />
+<!--more--></p>
+
+<p><span style="color: #ff0000;">— 2013/04/09 19:21, 追記 —</span><br />
+当ブログのPT2最新記事は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>です。</p>
+
+<h1 id="section">私の環境環境</h1>
+
+<ul>
+  <li>ubuntu 12.04 64 bit (3.0.0-12-generic)</li>
+  <li>PT2 Rev.A</li>
+  <li>分配器</li>
+  <li>アンテナケーブル(同軸ケーブル)5本(壁面から1本、分配器からpt2までに4本)</li>
+  <li>b-casカード(b-cas社に電話して2,000円で借りました</li>
+  <li>カードリーダ(b-casカードを読み込むため。e-tax用にも使えるそうです。)</li>
+  <li><a href="http://schrott.alteseisen.net/2011/10/18/%e4%ba%ba%e7%94%9f%e5%88%9d%e3%81%ae%e7%9c%bc%e9%8f%a1%e3%80%81jins-pc/" title="人生初の眼鏡、jins pc">jins pc</a></li>
+</ul>
+
+<h1 id="section-1">ハードウェアのセットアップ</h1>
+
+<p>パソコンの電源を切り、念のため電源のコンセントも抜き、pt2をマザーボードのpciスロットに刺しました。</p>
+
+<p>次に、b-casカードをカードリーダに差し(ICチップが付いている方を上に)、カードリーダをパソコンのUSBポートにつなぎました。</p>
+
+<p>あとは壁面のtvプラグ(tvコンセント?)とpt2をアンテナケーブルでつなぎました。ケーブルの端子は形状がいくつかあるようなので購入前に壁面のプラグを確認してください。F型が一般的だそうですが、同じF型でもネジ式のものとそうでないものがあります。ちなみにpt2はF型のネジ式端子です。もし壁面プラグがネジ式でなければ</p>
+
+<p>がおすすめです。</p>
+
+<p>購入後に万が一刺さらなければ同軸ケーブルをむき出しにして(カッターでケーブルの表面を切って中の銅色?のケーブルをむき出しにして)、壁面プラグに刺せばokです。むき出しにするのが不安であればビニールテープとかを巻いてしまえばokだと思います。</p>
+
+<h1 id="section-2">ソフトウェアのセットアップ</h1>
+
+<p>pcsc_scanするとカードリーダ、b-casともに認識していますが、録画・再生ができなかったため、毎度のことながら古いパッケージを使いました。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">#!/bin/bash
+
+# 作業ディレクトリ
+CURRENT_DIR=`pwd`
+WORK_DIR=$CURRENT_DIR/pt2_`date +%s`
+mkdir $WORK_DIR
+cd $WORK_DIR
+
+# インストールに必要なパッケージ
+sudo apt-get -y install pkg-config unzip autoconf build-essential linux-headers-`uname -r`
+
+# カードリーダを動かすためのパッケージ
+#sudo apt-get -y install libccid libpcsclite1 libpcsclite-dev pcsc-tools pcscd
+# 2012/06/10現在、最新版だとスマートカードリーダが正常に動作しないので旧バージョンを
+MARVERICK_REPOSITORY=&quot;deb http://jp.archive.ubuntu.com/ubuntu/ maverick main universe&quot;
+SOURCES_LIST=/etc/apt/sources.list
+if [ `grep &quot;$MARVERICK_REPOSITORY&quot; $SOURCES_LIST | wc -l` -ne 0 ]
+then
+	echo 10.10のレポジトリは既に追加されています
+else
+	echo 10.10のレポジトリを追加しました
+	sudo echo $'\n\n'# marverick japanese repository$'\n'${MARVERICK_REPOSITORY} | sudo tee -a $SOURCES_LIST
+	sudo apt-get update
+fi
+sudo apt-get --force-yes install libccid=1.3.11-1 libpcsclite1=1.5.5-3ubuntu2 libpcsclite-dev=1.5.5-3ubuntu2 pcscd=1.5.5-3ubuntu2 pcsc-tools=1.4.16-1
+
+# arib25
+wget http://hg.honeyplanet.jp/pt1/archive/ec7c87854f2f.zip
+unzip ec7c87854f2f.zip
+cd pt1-ec7c87854f2f/arib25/src/
+#wget http://hg.honeyplanet.jp/pt1/archive/c44e16dbb0e2.zip
+#unzip c44e16dbb0e2.zip
+#cd pt1-c44e16dbb0e2/arib25/src/
+make
+sudo make install
+
+# pt2ドライバ
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar jxf tip.tar.bz2
+cd `ls -tr | tail -1`/driver
+make
+sudo make install
+
+# recpt1(録画ソフトウェア)
+cd ../recpt1
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+
+# linuxに最初から入っているpt2ドライバを無効にします
+BLACK_LIST=`grep &quot;blacklist earth-pt1&quot; /etc/modprobe.d/blacklist.conf`
+if [ -z &quot;$BLACK_LIST&quot; ]; then
+	sudo sh -c &quot;echo '' &gt;&gt; /etc/modprobe.d/blacklist.conf&quot;
+	sudo sh -c &quot;echo 'blacklist earth-pt1' &gt;&gt; /etc/modprobe.d/blacklist.conf&quot;
+fi
+
+# 作業ディレクトリを削除
+cd $CURRENT_DIR
+echo -n &quot;作業ディレクトリを削除しますか? [y]es, or [n]o: &quot;
+read DEL_WORK_DIR
+if [ ${DEL_WORK_DIR} = &quot;y&quot; ]; then
+	rm -rf ${WORK_DIR}
+fi</pre>
+
+<h1 id="section-3">録画と再生</h1>
+
+<p>まず視聴したいチャンネル番号を<a href="http://www.maspro.co.jp/contact/bro/bro_ch.html">マスプロ電工さん</a>のサイトで調べておきましょう。</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># recpt1 --b25 --strip チャンネル番号 録画時間(秒) ファイル名
+# 札幌でNHK総合を３０秒録画する例です
+recpt1 --b25 --strip 15 30 ./hoge.ts
+# 録画時間を指定しない
+recpt1 --b25 --strip 15 - ./hoge.ts
+
+# リアルタイム視聴
+# vlcメディアプレイヤーで「ネットーワークストリームを開く」で「udp://@localhost:1234」とすれば再生されます
+recpt1 --udp --addr localhost --port 1234 --b25 --strip 30 - /dev/null
+# リアリタイムで見ながら録画
+recpt1 --udp --addr localhost --port 1234 --b25 --strip 30 - ./hoge.ts
+
+# 手軽にリアルタイム視聴
+recpt1 --b25 --strip --sid hd 30 - - | cvlc -</pre>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

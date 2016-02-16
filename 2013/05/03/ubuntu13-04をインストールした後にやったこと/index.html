@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu13.04(Raring Ringtail)をインストールした後にやったこと</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2013/05/03/ubuntu13-04%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%9f%e5%be%8c%e3%81%ab%e3%82%84%e3%81%a3%e3%81%9f%e3%81%93%e3%81%a8/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu13.04(Raring Ringtail)をインストールした後にやったこと</h1>
+    <p class="meta">May 3, 2013 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>今年も毎年恒例、ゴールデンウィークのubuntuバージョンアップです。<br />
+<!--more--></p>
+
+<h1 id="japaneseteam">JapaneseTeamのリポジトリを追加</h1>
+
+<p>いつもお世話になっております、Japanese Team様。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo apt-add-repository ppa:japaneseteam/ppa
+sudo apt-get update
+sudo apt-get install unzip ubuntu-defaults-ja
+</pre>
+
+<h1 id="ntpnict">NTPサーバをNICTに変更</h1>
+
+<p>初期値はubuntuのntpサーバになっていますが、昔からお世話になっている情報通信研究機構のサーバに変更します。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo sed -i.bak 's/NTPSERVERS=.*/NTPSERVERS="ntp.nict.jp"/' /etc/default/ntpdate
+</pre>
+
+<h1 id="section">グラフィックボードのドライバ</h1>
+
+<p>「ソフトウェアとアップデート」を開き、「追加のドライバー」タブでプロプライエタリのドライバを選択して「変更の適用」を押します。<br />
+英語版では「Software &amp; Updates」、「Additional Drivers」タブでした。<br />
+<img src="http://farm3.staticflickr.com/2862/9005720275_0c1ab4584b_o.jpg" alt="" /></p>
+
+<h1 id="section-1">ホームディレクトリを英語に</h1>
+
+<p>ホームにある「デスクトップ」などの各種ディレクトリを英語にします。<br />
+コマンドラインで操作するときに楽なので。<br />
+やり方は簡単、nautilus(windowsで言うところのエクスプローラ)で名前を変えるだけです。<br />
+以前は</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">env LANGUAGE=C LC_MESSAGES=C xdg-user-dirs-gtk-update
+</pre>
+
+<p>とかで ~/.config/user-dirs.dirs を編集しましたが、13.04 では再起動時に元の日本語に戻ってしまった。<br />
+nautilusを開いて右クリックで「名前の変更」したところ、user-dirs.dir が変更されていて再起動時も英語のままでした。</p>
+
+<h1 id="section-2">アーカイバと動画</h1>
+
+<p>rarや7zipは使わないかもしれませんが、とりあえずインストール。必要になった時に過去の自分に少しだけイラッとしちゃうので。<br />
+同じ理由で、大抵の動画を再生できる VLC media player も。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo apt-get install p7zip-full rar unrar vlc
+</pre>
+
+<h1 id="gui">システム設定に便利なGUIツール</h1>
+
+<ul>
+  <li>ユーザとグループ<br />
+最初から入っている「ユーザーアカウント」を使えばGUIでユーザの追加と削除はできますが、グループの管理もしたい。</li>
+  <li>Tweak Tool<br />
+フォントや時刻表示、ウィンドウに最大化と最小化ボタンを表示するなど様々な設定がGUIでできます。</li>
+</ul>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo apt-get install gnome-tweak-tool gnome-system-tools
+</pre>
+
+<h1 id="dns">DNSサーバの設定</h1>
+
+<p>namebenchをインストール＆実行しておすすめの設定に従いました。<br />
+26.4%も速いって話なので。</p>
+
+<table>
+  <tr>
+    <td>
+      Primary Server
+    </td>
+    
+    <td>
+      129.250.35.250
+    </td>
+    
+    <td>
+      NTT
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Secondary Server
+    </td>
+    
+    <td>
+      127.0.1.1
+    </td>
+    
+    <td>
+      SYS-127.0.1.1
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      Tertiary Server
+    </td>
+    
+    <td>
+      210.130.1.1
+    </td>
+    
+    <td>
+      IIJ4U-11 JP
+    </td>
+  </tr>
+</table>
+
+<p><img src="http://farm3.staticflickr.com/2850/9034162674_ed42b740f6_o.jpg" alt="" /></p>
+
+<h1 id="section-3">その他</h1>
+
+<p>個人的に必須なものです。</p>
+
+<ul>
+  <li>faenza(アイコンテーマ)</li>
+  <li>jdkとソース</li>
+  <li>pyrenamer(写真のファイル名を日付に変更したり、各種リネーム作業に便利)</li>
+  <li>synaptic(ソフトウェアセンターよりこっちが好き)</li>
+  <li>at(最初から入ってない?!)</li>
+</ul>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo add-apt-repository ppa:tiheum/equinox
+sudo apt-get update
+sudo apt-get install gnome openjdk-6-jdk openjdk-6-source openjdk-7-jdk openjdk-7-source pyrenamer synaptic faenza-icon-theme at
+</pre>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>conky の設定ファイル</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2013/06/07/conky-%e3%81%ae%e8%a8%ad%e5%ae%9a%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>conky の設定ファイル</h1>
+    <p class="meta">Jun 7, 2013 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>.conkyrc をひけらかします。<br />
+nvidiaのgpu温度表示に対応しています。<br />
+gnomeでデスクトップをクリックすると消える問題も解決済みです。<br />
+<!--more--></p>
+
+<p>hddの温度表示は hddtemp のインストールが必要です。<br />
+cpuの温度表示はsensorsコマンド(lm-sensorsパッケージ)の結果を整形して表示しています。<br />
+<img src="http://farm4.staticflickr.com/3666/8976120401_877b80db29_o.png" alt="" /></p>
+
+<p>wi-fiの場合は「eth0」を「wlan0」に変更。</p>
+
+<pre class="brush: plain; title: ; notranslate" title="">alignment top_right
+background no
+double_buffer yes
+border_width 1
+cpu_avg_samples 4
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont Rounded M+ 1m bold:style=bold:size=16
+gap_x 5
+gap_y 60
+minimum_size 5 5
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_type conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+TEXT
+$alignc $nodename
+$hr
+${color grey}Uptime:$color $uptime
+${color grey}CPU Usage:$color ${cpu cpu0}%
+${cpugraph cpu1 25,180 white} $alignr${cpugraph cpu2 25,180 white}
+${cpugraph cpu3 25,180 white} $alignr${cpugraph cpu4 25,180 white}
+${color grey}RAM Usage
+${memgraph 25 white}
+${color grey}Swap Usage:$color $swapperc%
+$hr
+${color grey}Networking:$color
+ ${wireless_essid eth0}
+ Up:$color ${upspeed eth0} ${color grey} - Down:$color ${downspeed eth0}
+$hr
+${color grey}Temperature:$color
+ ${color grey}CPU$color $alignr${execi 10 sensors | grep "^CPU Temperature:"  | sed "s/ \+/\t/g" | cut -f 3}
+ ${color grey}Motherboard$color $alignr${execi 10 sensors | grep "^MB Temperature:"  | sed "s/ \+/\t/g" | cut -f 3}
+ ${color grey}GPU$color $alignr${execi 10 nvidia-settings -q GPUCoreTemp | grep "Attribute" | sed "s/.*: \([0-9]\+\).*/\1/g"}°C
+
+ ${color grey}/dev/sda $color $alignr${hddtemp /dev/sda}°C
+ ${color grey}/dev/sdb $color $alignr${hddtemp /dev/sdb}°C
+$hr
+${color grey}File systems:$color
+ ${color grey}/$color $alignc${fs_size /} ${fs_bar 10 /}
+ ${color grey}/home$color $alignc${fs_size /home} ${fs_bar 10 /home}
+
+$hr
+${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${color grey}Name ${alignr}PID CPU% MEM%
+${color lightgrey} ${top name 1} ${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2} ${alignr}${top pid 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3} ${alignr}${top pid 3} ${top cpu 3} ${top mem 3}
+$hr
+</pre>
+
+<p>参考<br />
+/etc/conky/conky.conf
+<a href="http://conky.sourceforge.net/config_settings.html">http://conky.sourceforge.net/config_settings.html</a>
+<a href="http://conky.sourceforge.net/variables.html">http://conky.sourceforge.net/variables.html</a>
+<a href="https://wiki.archlinux.org/index.php/Conky">https://wiki.archlinux.org/index.php/Conky</a></p>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

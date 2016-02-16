@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntuのセキュリティ(アンチウィルス、ファイアウォール)</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2010/02/23/ubuntu%e3%81%ae%e3%82%bb%e3%82%ad%e3%83%a5%e3%83%aa%e3%83%86%e3%82%a3%e3%82%a2%e3%83%b3%e3%83%81%e3%82%a6%e3%82%a3%e3%83%ab%e3%82%b9%e3%80%81%e3%83%95%e3%82%a1%e3%82%a4%e3%82%a2%e3%82%a6%e3%82%a9/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntuのセキュリティ(アンチウィルス、ファイアウォール)</h1>
+    <p class="meta">Feb 23, 2010 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>ubuntuというかlinuxのセキュリティってどうすればいいのだろう。。？とお悩みの方へ</p>
+
+<!--more-->
+
+<h1 id="span-styletext-decoration-underlinespan"><span style="text-decoration: underline;">ウィルス、ルートキット、マルウェア</span></h1>
+
+<p>linux系のウィルスに関連する記事は少ないようです。試しに「linux ウィルス」で検索すると「it media」の記事が最初にヒットする。その見出しは「新米Linuxユーザーへの一言アドバイス——アンチウイルスソフトは不要です」というタイトル。しかも3年前の記事。。そういうことらしいです。すごく原始的なウィルス対策で「知らないファイルを開かない(実行しない)」「パスワードはアルファベットと数字を組み合わせた文字の羅列」「短いパスワードはダメ」「定期的にパスワードを変えましょう」「インターネットには直接つながず、ルータ経由で」というものがありますが、これで良いみたいです。あと基本的にソフトのインストールはsynaptics(apt)を使うので、なんでもかんでもググって落として実行のwindowsよりも安全なんだと思います。</p>
+
+<p>でもwindowsユーザの友達にウィルスメールを送ったら悲しいですよね。そんなときは</p>
+
+<ul>
+  <li>chkrootkit</li>
+  <li>clamav</li>
+  <li>clamtk</li>
+  <li>clamav-freshclam</li>
+</ul>
+
+<p>を入れておくことがおすすめ、とubuntuフォーラムに書いてありました。<br />
+ウィルスチェックを無料でやっているフリーメールを使うのもありだと思います。そうすれば、自分のパソコンでセキュリティソフトを動かさなくて済みます。</p>
+
+<h1 id="span-styletext-decoration-underlinespan-1"><span style="text-decoration: underline;">ファイアウォール</span></h1>
+
+<p>いくつかあるようですが、私は「ufw」を使っています。けっこう軽くて、設定も簡単でおすすめです。インストール後に、</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo ufw enable
+</pre>
+
+<p>で、ファイアウォールを有効にしつつ、パソコンの再起動時にもufwが自動で動くようになります。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo ufw default DENY
+</pre>
+
+<p>を実行するとすべての外部からの通信を遮断します。ブログを見たり書いたり、youtubeで動画見たり、メール書いたりするだけ(一般ユーザ)であれば、これでファイアウォールの設定はokだと思います。</p>
+
+<p>sshで外部から接続したい場合は次のコマンドを実行</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo ufw allow ssh
+</pre>
+
+<p>こんな感じで外部からの通信をすべて無向にして、必要な分だけ許可することができます。</p>
+
+<p>ref : <a href="http://www.itmedia.co.jp/enterprise/articles/0703/02/news010.html">http://www.itmedia.co.jp/enterprise/articles/0703/02/news010.html</a></p>
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

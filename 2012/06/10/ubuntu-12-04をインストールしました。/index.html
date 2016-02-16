@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 12.04(Precise Pangolin)のインストール直後にやったこと。</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2012/06/10/ubuntu-12-04%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 12.04(Precise Pangolin)のインストール直後にやったこと。</h1>
+    <p class="meta">Jun 10, 2012 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>そろそろ落ち着いたのかなぁと思いインストールしました。<br />
+<!--more--></p>
+
+<h1 id="section">フォントとフォントサイズの変更</h1>
+
+<p>2つか、3つ前のバージョンだと簡単にフォントを変えることができましたが、前バージョンくらいから gnome-tweak-tool をインストールしてフォントを変えています。<br />
+インストールしたらunity(windowsキーというかスーパーキーを押して出てくるアレ)で「高度な設定」を起動します。</p>
+
+<p>今回いろいろなフォントを探して見ましたが yukarrya が良さげです。ただ開発者が不明で勝手に配布している状態なようなので私は遠慮することにしました。<br />
+なのでデフォルトフォントを Migu 1C、ドキュメント/モノスペースフォントを MigMix 1M にしました。プログラマの人たちには Inconsolata が人気ようのです。</p>
+
+<h1 id="nautilus">Nautilusの設定</h1>
+
+<p>windowsで言うところのエクスプローラです。<br />
+元々は「詳細表示」を好んでいましたが、詳細が必要な場合の多くはターミナルを使っているので「アイコン表示」にしています。<br />
+設定画面の「アイテム」タブで「見出し」を「サイズ」、「更新日時」、「場所」の順に設定します。表示を拡大(ctrl+マウスホイールをくるくる)していくと、設定した順に項目が表示されます。たまにあると便利です。</p>
+
+<p>あとは日付の書式を「YYYY-MM-DD hh:dd:mm」に変えてシンプルに。</p>
+
+<h1 id="trash-cli">trash-cli</h1>
+
+<p>間違って rm しちゃった。。なんて悲劇を回避するために使っています。<br />
+alias rm=”trash-put” なんてやっておけば rm してもゴミ箱に行くので安心です。</p>
+
+<h1 id="ime">IME</h1>
+
+<p>日本語imeと言えば変換能力ではatokが一番でしょう。個人用途ではちょっと高いなぁと思うのでmozcを使っています。<br />
+mozc-server mozc-utils-gui ibus-mozc をインストール。<br />
+パネル(?画面上部の時計がある並び)のキーボードの絵をクリックして設定画面。<br />
+「インプットメソッド」タブで「mozc」を追加して「anthy」を削除しました。<br />
+なおテキストエリアを選択している状態では設定画面が開かないようです。</p>
+
+<h1 id="section-1">アイコンテーマ</h1>
+
+<p>faenza がオススメです。<br />
+下記の通りインストールして、先ほどの「高度な設定」でfaenzaを選びます。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo add-apt-repository ppa:tiheum/equinox
+sudo apt-get update
+sudo apt-get install faience-icon-theme</pre>
+
+<h1 id="guake-terminal">guake-terminal</h1>
+
+<p>パッケージ名は「guake」。お気に入りのターミナルです。F12を押すと上から画面が落ちてきます。<br />
+「フォーカスを失ったら隠す」設定にするとなお良いと思います。<br />
+画面右上の歯車(シャットダウンがあるところ)に「自動起動するアプリケーション」があるのでguake terminalを登録します。</p>
+
+<h1 id="ubuntu-tweak">ubuntu tweak</h1>
+
+<p>孫の手的なアプリです。
+<a href="http://ubuntu-tweak.com/">http://ubuntu-tweak.com/</a>からダウンロードしてインストールします。debパッケージを配布しているのでクリックするだけで簡単にインストールできます。<br />
+ホームディレクトリの各ディレクトリを変更できたりします(デスクトップ =&gt; desktop)。英語名にするとコマンド操作の時に楽ですよね。</p>
+
+<h1 id="section-2"> 拡大鏡</h1>
+
+<p>拡大鏡と言うと少し違うのかもしれませんが。。<br />
+CompizConfig設定マネージャ(パッケージ名は compizconfig-settings-manager )をインストールします。<br />
+「Enhanced Zoom Desktop」で設定します。<br />
+マウスの zoom in を「<super>Button4」、zoom out を「<super>Button5」に設定しました。  
+これでスーパーキー(windowsキー)を押しながらマウスホイールをくるくるすると、画面が拡大/縮小されます。  
+画面から1~2m離れて作業する私には必須の機能です。  
+なおButton4とか5の番号は使っているマウスによって変わるかもしれません。</super></super></p>
+
+<h1 id="launcher">Launcherを自動的に隠す</h1>
+
+<p>デフォルトだと画面左端にあるアレはランチャーと呼ぶらしいです。前のバージョンだと勝手に隠れてくれた気がするのですが、今回から隠れてくれません。<br />
+デスクトップを右クリックして「背景の変更」をクリック。次に「挙動」タブで「〜自動的に隠す」のチェックボックスをオンにします。<br />
+マウスを左に持って行ってもランチャー出てこないってときは「表示感度」を高くしてあげればok。</p>
+
+<p>medibuntuパッケージ<br />
+フリーではなくubuntuに含まれていないソフトウェアたちをインストールします。wmv(windows media video)のデコーダーなどです。vlc入れればそれでいい気もしますが。。<br />
+http://medibuntu.org/repository.php/ に書いてあるとおり実行します。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo -E wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list &amp;&amp; sudo apt-get --quiet update &amp;&amp; sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring &amp;&amp; sudo apt-get --quiet update
+sudo apt-get install app-install-data-medibuntu apport-hooks-medibuntu
+</pre>
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ubuntu 12.10 (Quantal Quetzal) 64ビット版 と PT2 で地デジ見ました。</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="個人的なメモを兼ねたブログです
+">
+    <link rel="canonical" href="http://blog.h3x.red//2013/01/11/ubuntu-12-10-quantal-quetzal-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"></a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>ubuntu 12.10 (Quantal Quetzal) 64ビット版 と PT2 で地デジ見ました。</h1>
+    <p class="meta">Jan 11, 2013 • hogetatsu</p>
+  </header>
+
+  <article class="post-content">
+  <p>pt2の設定方法を記します。<br />
+<!--more--></p>
+
+<p>ubuntu 13.04 の対応は<a href="http://schrott.alteseisen.net/2013/05/04/ubuntu-13-04raring-ringtail-%e3%81%a8-pt2-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/" title="Ubuntu 13.04(Raring Ringtail) と PT2 でテレビを見る">こちら</a>。</p>
+
+<h1 id="section">ソフトウェアのセットアップ</h1>
+
+<p>カードリーダー(NTT-ME SCR3310-NTTCom)周りに問題があり古いパッケージを利用していましたが、maverickのレポジトリがなくなりました。<br />
+ただ <a href="http://ludovicrousseau.blogspot.jp/2012/04/new-version-of-libccid-146.html">libccid 1.4.6 でサポート外になった</a>NTTのカードリーダーが <a href="http://ludovicrousseau.blogspot.jp/2012/10/new-version-of-libccid-148.html">1.4.8 でサポート復活した</a>ようです。<br />
+ubuntu 12.10 では 1.4.7 のままですが、13.04 からは 1.4.8 を採用しているのでこれを利用するようにしました。</p>
+
+<p>下記スクリプトを実行後に視聴できなければ再起動してみて下さい。<br />
+カードリーダー(NTT-ME SCR3310-NTTCom)はLEDが点灯しっぱなしは失敗、点滅していれば成功です。</p>
+
+<pre class="brush: bash; title: ; notranslate" title="">#!/bin/bash
+
+# recpt1 installer
+# author: hogetatsu
+# website: http://schrott.alteseisen.net/
+
+# 作業ディレクトリ
+CURRENT_DIR=`pwd`
+WORK_DIR=$CURRENT_DIR/pt2_`date +%s`
+mkdir $WORK_DIR
+cd $WORK_DIR
+
+# インストールに必要なパッケージ
+sudo apt-get -y install pkg-config unzip autoconf build-essential linux-headers-`uname -r`
+
+# カードリーダを動かすためのパッケージ
+sudo apt-get -y install libccid libpcsclite1 libpcsclite-dev pcsc-tools pcscd
+
+# NTTのカードリーダーが認識されない問題の暫定対応
+# ubuntu 13.04以降は不要です。
+sudo apt-get -y install dpkg
+wget http://ftp.jaist.ac.jp/pub/Linux/ubuntu//pool/universe/c/ccid/libccid_1.4.8-1_amd64.deb
+sudo dpkg -i ./libccid_1.4.8-1_amd64.deb
+
+sudo /etc/init.d/pcscd restart
+
+# arib25
+wget http://hg.honeyplanet.jp/pt1/archive/ec7c87854f2f.zip
+unzip ec7c87854f2f.zip
+cd pt1-ec7c87854f2f/arib25/src/
+make
+sudo make install
+
+# pt2ドライバ
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar jxf tip.tar.bz2
+cd `ls -tr | tail -1`/driver
+make
+sudo make install
+
+# recpt1(録画ソフトウェア)
+cd ../recpt1
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+
+# linuxに最初から入っているpt2ドライバを無効にします
+BLACK_LIST=`grep "blacklist earth-pt1" /etc/modprobe.d/blacklist.conf`
+if [ -z "$BLACK_LIST" ]; then
+	sudo sh -c "echo '' &gt;&gt; /etc/modprobe.d/blacklist.conf"
+	sudo sh -c "echo 'blacklist earth-pt1' &gt;&gt; /etc/modprobe.d/blacklist.conf"
+fi
+
+# 作業ディレクトリを削除
+cd $CURRENT_DIR
+echo -n "作業ディレクトリを削除しますか? [y]es, or [n]o: "
+read DEL_WORK_DIR
+if [ ${DEL_WORK_DIR} = "y" ]; then
+	rm -rf ${WORK_DIR}
+fi</pre>
+
+<h1 id="section-1">録画と再生</h1>
+
+<p>視聴したいチャンネル番号を<a href="http://www.maspro.co.jp/contact/bro/bro_ch.html">マスプロ電工さん</a>のサイトで調べておきましょう。</p>
+
+<pre class="brush: bash; title: ; notranslate" title=""># recpt1 --b25 --strip チャンネル番号 録画時間(秒) ファイル名
+# 札幌でNHK総合を30秒録画する例です
+recpt1 --b25 --strip 15 30 ./hoge.ts
+# 録画時間を指定しない
+recpt1 --b25 --strip 15 - ./hoge.ts
+
+# vlcメディアプレイヤーで手軽にリアルタイム視聴
+recpt1 --b25 --strip --sid hd 30 - - | cvlc -
+
+# udp配信
+recpt1 --udp --addr localhost --port 1234 --b25 --strip 30 - /dev/null
+# udp配信しつつ録画
+recpt1 --udp --addr localhost --port 1234 --b25 --strip 30 - ./hoge.ts
+</pre>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li></li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">個人的なメモを兼ねたブログです
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

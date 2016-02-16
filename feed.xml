@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>個人的なメモを兼ねたブログです
+</description>
+    <link>http://blog.h3x.red//</link>
+    <atom:link href="http://blog.h3x.red//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 16 Feb 2016 21:31:37 +0900</pubDate>
+    <lastBuildDate>Tue, 16 Feb 2016 21:31:37 +0900</lastBuildDate>
+    <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>ＪＲ京浜東北線が止まった原因</title>
+        <description>&lt;p&gt;8/4 19:15頃に架線が切れて電車が立ち往生、翌01:35に復旧、35万人に影響。 原因は停車位置ミスと発表がありましたがホント？？ &lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;毎日新聞は次のように報道しています。(一部引用)
+&lt;a href=&quot;http://mainichi.jp/select/news/20150806k0000m040101000c.html&quot;&gt;http://mainichi.jp/select/news/20150806k0000m040101000c.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;今回の現場では近くで開催された花火大会による混雑で運行が遅れ、先行列車との距離が３００〜４００メートルまで接近した。ＡＴＣは低速進行を表示していたが、運転士は前方の列車を気にして早めに列車を停止させ、たまたま先頭から８両目のパンタグラフがエアセクションにかかった。運転再開時にショートして、列車後方の変電所から来ている系統の架線２本が熱で溶け、切れたという。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;エアクッションは「停止禁止区間」などと報道されています。ここで止まると発進時にトラブルが起こりがちなそうです。運転士がこの区間を認識していなかったことが原因とのこと。&lt;/p&gt;
+
+&lt;p&gt;先行列車に接近したから停車したと言っているのに、「接近」の妥当性が検証されていない。&lt;br /&gt;
+問題の原因(停車位置)が発生した理由(接近)について、専門家などの意見が欲しい。&lt;/p&gt;
+
+&lt;p&gt;本当に接近したから止まったのであれば、むしろ衝突事故を起こさなかった点で運転士を評価しても良いのではという議論も起こる。エアクッションの手前で停車できれば一番良かったのでしょうけど。&lt;/p&gt;
+
+&lt;p&gt;別件ですが、鉄道会社のアナウンスって分かりづらい。遅れた時のアナウンスは、待ち合わせに遅れた理由として相手に言えないこと多々。最たるものは「信号が赤だから変わったら発進する」だったかな。&lt;/p&gt;
+
+&lt;p&gt;鉄道周りって何かと不審だと思うこと多い。毎日乗るだけに不満もたまりやすいのかもしれません。&lt;/p&gt;
+
+&lt;p&gt;そうは言っても世界平均からすれば高品質らしいので、なんだかんだでありがたいんですけどね。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Aug 2015 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2015/08/06/%ef%bd%8a%ef%bd%92%e4%ba%ac%e6%b5%9c%e6%9d%b1%e5%8c%97%e7%b7%9a%e3%81%8c%e6%ad%a2%e3%81%be%e3%81%a3%e3%81%9f%e5%8e%9f%e5%9b%a0%e3%80%9c%e9%89%84%e9%81%93%e3%81%af%e3%81%84%e3%81%a4%e3%82%82%e3%82%8f/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2015/08/06/%ef%bd%8a%ef%bd%92%e4%ba%ac%e6%b5%9c%e6%9d%b1%e5%8c%97%e7%b7%9a%e3%81%8c%e6%ad%a2%e3%81%be%e3%81%a3%e3%81%9f%e5%8e%9f%e5%9b%a0%e3%80%9c%e9%89%84%e9%81%93%e3%81%af%e3%81%84%e3%81%a4%e3%82%82%e3%82%8f/</guid>
+        
+        
+        <category>ぼやき</category>
+        
+      </item>
+    
+      <item>
+        <title>vlc でハードウェアアクセラレーションを有効にする(amd)</title>
+        <description>&lt;p&gt;linuxでGPUの動画再生支援機能を有効にする設定です。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;AMD使っている人向けです。&lt;/p&gt;
+
+&lt;p&gt;まず「xvba-va-driver」をインストールして、下図のようにvlcを設定。&lt;/p&gt;
+
+&lt;p&gt;「ツール」&lt;br /&gt;
+=&amp;gt;「設定」&lt;br /&gt;
+=&amp;gt;「入力/コーデック」&lt;br /&gt;
+=&amp;gt;「ハードウェアアクセラレーションによるデコード」&lt;br /&gt;
+=&amp;gt;「ビデオアクセラレーション(VA) API」&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.flickr.com/photos/97106165@N03/14053696472&quot; title=&quot;20140429-vlc-setting-va by hogetasu hoge, on Flickr&quot;&gt;&lt;img alt=&quot;20140429-vlc-setting-va&quot; src=&quot;https://farm6.staticflickr.com/5002/14053696472_07ffc7c3a0_o.png&quot; width=&quot;810&quot; height=&quot;594&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 29 Apr 2014 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2014/04/29/vlc-%e3%81%a7%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2%e3%82%a2%e3%82%af%e3%82%bb%e3%83%a9%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%9c%89%e5%8a%b9%e3%81%ab%e3%81%99/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2014/04/29/vlc-%e3%81%a7%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2%e3%82%a2%e3%82%af%e3%82%bb%e3%83%a9%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%9c%89%e5%8a%b9%e3%81%ab%e3%81%99/</guid>
+        
+        <category>linux</category>
+        
+        <category>ubuntu</category>
+        
+        <category>vlc</category>
+        
+        <category>ハードウェアアクセラレーション</category>
+        
+        <category>動画再生支援機能</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>ubuntu で ssd の trim を有効にする</title>
+        <description>&lt;p&gt;マウントオプションに discard を追加するそうです。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;/etc/fstab を直接編集でokです。&lt;/p&gt;
+
+&lt;p&gt;また下図のように disks(gnome-disk-utility パッケージ) を使うと GUI で /etc/fastab を編集できます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.flickr.com/photos/97106165@N03/14053502401&quot; title=&quot;20140429-ubuntu-discard-trim-2 by hogetasu hoge, on Flickr&quot;&gt;&lt;img src=&quot;https://farm8.staticflickr.com/7382/14053502401_13178dc8a6_o.png&quot; alt=&quot;20140429-ubuntu-discard-trim-2&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.flickr.com/photos/97106165@N03/14076459523&quot; title=&quot;20140429-ubuntu-discard-trim by hogetasu hoge, on Flickr&quot;&gt;&lt;img src=&quot;https://farm6.staticflickr.com/5446/14076459523_83e7cab4d7_o.png&quot; alt=&quot;20140429-ubuntu-discard-trim&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 29 Apr 2014 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2014/04/29/ubuntu-%e3%81%a7-ssd-%e3%81%ae-trim-%e3%82%92%e6%9c%89%e5%8a%b9%e3%81%ab%e3%81%99%e3%82%8b/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2014/04/29/ubuntu-%e3%81%a7-ssd-%e3%81%ae-trim-%e3%82%92%e6%9c%89%e5%8a%b9%e3%81%ab%e3%81%99%e3%82%8b/</guid>
+        
+        <category>discard</category>
+        
+        <category>ssd</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>ubuntu でハードディスクを自動マウントする方法</title>
+        <description>&lt;p&gt;/ や /home 以外の hdd や ssd というかパーティションを ubuntu(13.10) 起動時にマウントする方法です。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;内蔵hddを追加してubuntuを起動してもマウントされません。&lt;br /&gt;
+今回は /etc/fstab を直接編集せず disks(gnome-disk-utility) で設定しました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/97106165@N03/10362795364/&quot; title=&quot;2013-10-19-disks-1 by hogetatsu, on Flickr&quot;&gt;&lt;img src=&quot;http://farm4.staticflickr.com/3762/10362795364_8f728dd4d5_o.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;数の通り設定すればOKです。&lt;br /&gt;
+「ユーザーインターフェースに表示しない」にチェックを入れたところ、起動時にマウントエラーが発生しました。&lt;br /&gt;
+&lt;a href=&quot;http://www.flickr.com/photos/97106165@N03/10362879593/&quot; title=&quot;2013-10-19-disks-2 by hogetatsu, on Flickr&quot;&gt;&lt;img src=&quot;http://farm6.staticflickr.com/5507/10362879593_e4d722b1d6_o.jpg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 20 Oct 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/10/20/ubuntu-%e3%81%a7%e3%83%8f%e3%83%bc%e3%83%89%e3%83%87%e3%82%a3%e3%82%b9%e3%82%af%e3%82%92%e8%87%aa%e5%8b%95%e3%83%9e%e3%82%a6%e3%83%b3%e3%83%88%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/10/20/ubuntu-%e3%81%a7%e3%83%8f%e3%83%bc%e3%83%89%e3%83%87%e3%82%a3%e3%82%b9%e3%82%af%e3%82%92%e8%87%aa%e5%8b%95%e3%83%9e%e3%82%a6%e3%83%b3%e3%83%88%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95/</guid>
+        
+        <category>hdd</category>
+        
+        <category>ssd</category>
+        
+        <category>ubuntu</category>
+        
+        <category>マウント</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>ubuntu13.10(Saucy Salamander) 64bit をインストールました。</title>
+        <description>&lt;p&gt;いつもの恒例行事です。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;インストール後に再起動すると&lt;br /&gt;
+/boot/grub/i386-pc～～～～ not found&lt;br /&gt;
+みたいなエラーが出ました。&lt;br /&gt;
+64bit版なので i386 が抜けちゃったのでしょうか。&lt;br /&gt;
+ともかくインストールディスクでもう一度起動してtry ubuntu。&lt;br /&gt;
+&lt;a href=&quot;http://kledgeb.blogspot.jp/2012/10/ubuntu-grub2-grub2.html&quot;&gt;こちら&lt;/a&gt;を参考にgrubを再インストールして解決しました。&lt;/p&gt;
+
+&lt;p&gt;インストールしたものやグラボを有効に設定する方法は&lt;a href=&quot;http://schrott.alteseisen.net/2013/05/03/ubuntu13-04%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%97%e3%81%9f%e5%be%8c%e3%81%ab%e3%82%84%e3%81%a3%e3%81%9f%e3%81%93%e3%81%a8/&quot; title=&quot;ubuntu13.04(Raring Ringtail)をインストールした後にやったこと&quot;&gt;以前のとおり&lt;/a&gt;です。&lt;/p&gt;
+
+&lt;p&gt;amdのapu、richland を使っていたら画面の右下にamdのロゴとともに「unsupported hadware」って四六時中出ていたのですが、今回は出なくなりました。出ていただけで、正常に動いているふうだったのですが。&lt;br /&gt;
+ともかくブラウザ開いているときも映画を見るときも、メールを打っているときも、いつだって画面の右下に。&lt;br /&gt;
+残暑厳しい秋の日も、雨の日も、風の日だって、もちろんいつも同じ場所にいる。&lt;br /&gt;
+そんな邪魔な奴でも失って気づくことってあるですね。&lt;br /&gt;
+1メートルの銅の筒を40kmに伸ばしたくらいの不思議な感覚が心を覆っています。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 19 Oct 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/10/19/ubuntu13-10saucy-salamander-64bit-%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/10/19/ubuntu13-10saucy-salamander-64bit-%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/</guid>
+        
+        <category>13.1</category>
+        
+        <category>ubuntu</category>
+        
+        <category>インストール</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>Ubuntu と PT3 でテレビを見る</title>
+        <description>&lt;p&gt;pt3の設定方法です。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;履歴&lt;/h1&gt;
+
+&lt;p&gt;&lt;u&gt;2015/06/28&lt;/u&gt;&lt;br /&gt;
+Ubuntu 15.04(Vivid Vervet)で動作しました。&lt;br /&gt;
+&lt;u&gt;2014/10/25&lt;/u&gt;&lt;br /&gt;
+14.10(Utopic Unicorn)で動作しました。&lt;br /&gt;
+&lt;u&gt;2014/04/29&lt;/u&gt;&lt;br /&gt;
+14.04(Trusty Tahr)で動作しました。&lt;br /&gt;
+&lt;u&gt;2013/10/19&lt;/u&gt;&lt;br /&gt;
+13.04(Raring Ringtail)用に書いた記事ですが、13.10(Saucy Salamander)でも動作確認済みです。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;ハードウェアのセットアップ&lt;/h1&gt;
+
+&lt;p&gt;詳しくは&lt;a href=&quot;http://schrott.alteseisen.net/2012/06/10/ubuntu-12-04-precise-pangolin-64%e3%83%93%e3%83%83%e3%83%88%e7%89%88-%e3%81%a8-pt2-%e3%81%a7%e5%9c%b0%e3%83%87%e3%82%b8%e8%a6%8b%e3%81%be%e3%81%97%e3%81%9f%e3%80%82/&quot; title=&quot;ubuntu 12.04 (Precise Pangolin) 64ビット版 と PT2 で地デジ見ました。&quot;&gt;こちら&lt;/a&gt;を。PT2の記事ですが、スロットがpciかpci expressかの違いで後はほぼ同じです。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;ソフトウェアのセットアップ&lt;/h1&gt;
+
+&lt;p&gt;下記スクリプトを実行後、再起動してください。&lt;br /&gt;
+カードリーダー(NTT-ME SCR3310-NTTCom)はLEDが点灯しっぱなしは失敗、点滅していれば成功です。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;#!/bin/sh
+
+# recpt3 installer for ubuntu
+# author: hogetatsu
+# website: http://schrott.alteseisen.net/
+
+# arib25のブランチ
+ARIB25_BRANCH=ec7c87854f2f
+# 原罪のディレクトリ
+CURRENT_DIR=`pwd`
+# 作業ディレクトリ
+WORK_DIR=$CURRENT_DIR/pt3_`date +%s`
+mkdir $WORK_DIR
+cd $WORK_DIR
+
+# インストールに必要なパッケージ
+sudo apt-get -y install git pkg-config unzip autoconf build-essential linux-headers-`uname -r`
+
+# カードリーダを動かすためのパッケージ
+sudo apt-get -y install libccid libpcsclite1 libpcsclite-dev pcsc-tools pcscd
+sudo /etc/init.d/pcscd restart
+
+# ドライバのインストール
+sudo echo &quot;blacklist earth-pt3&quot; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
+git clone https://github.com/m-tsudo/pt3.git
+cd ./pt3
+make
+sudo make install
+
+# スリープから復帰後に cannot specified channel になるのを防ぎます
+SLEEP_MODULE_FILE=/etc/pm/config.d/00sleep_module
+SLEEP_MODULE_VALUE=&#39;SUSPEND_MODULES=&quot;pt3_drv&quot;&#39;
+# ファイルがないと tee できないので
+sudo touch $SLEEP_MODULE_FILE
+if ! grep $SLEEP_MODULE_VALUE $SLEEP_MODULE_FILE; then
+	echo $SLEEP_MODULE_VALUE | sudo tee -a $SLEEP_MODULE_FILE
+fi
+
+# arib25
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/${ARIB25_BRANCH}.zip
+unzip ${ARIB25_BRANCH}.zip
+cd pt1-${ARIB25_BRANCH}/arib25/src
+make
+sudo make install
+
+# recpt1(録画ソフトウェア)
+cd $WORK_DIR
+wget http://hg.honeyplanet.jp/pt1/archive/tip.tar.bz2
+tar jxf tip.tar.bz2
+cd `ls -tr | tail -1`/recpt1
+./autogen.sh
+./configure --enable-b25
+make
+sudo make install
+
+# 作業ディレクトリを削除
+cd $CURRENT_DIR
+echo -n &quot;作業ディレクトリを削除しますか? [y]es, or [n]o: &quot;
+read DEL_WORK_DIR
+if [ ${DEL_WORK_DIR} = &quot;y&quot; ]; then
+    rm -rf ${WORK_DIR}
+fi
+&lt;/pre&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;録画と再生&lt;/h1&gt;
+
+&lt;p&gt;視聴したいチャンネル番号を&lt;a href=&quot;http://www.maspro.co.jp/contact/bro/bro_ch.html&quot;&gt;マスプロ電工さん&lt;/a&gt;のサイトで調べておきましょう。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;# 札幌でNHK総合(チャンネル15)を hoge.ts として30秒録画する例です
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 30 ./hoge.ts
+# 録画時間を指定しない
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 - ./hoge.ts
+
+# vlcメディアプレイヤーで手軽にリアルタイム視聴
+recpt1 --b25 --strip --device /dev/pt3video2 --sid hd 15 - - | cvlc -
+
+# udp配信
+recpt1 --b25 --strip --udp --addr localhost --port 1234 --device /dev/pt3video2 --sid hd 15 - /dev/null
+# udp配信しつつ録画
+recpt1 --b25 --strip --udp --addr localhost --port 1234 --device /dev/pt3video2 --sid hd 15 - ./hoge.ts
+&lt;/pre&gt;
+
+</description>
+        <pubDate>Fri, 26 Jul 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/07/26/ubuntu-13-04raring-ringtail-%e3%81%a8-pt3-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/07/26/ubuntu-13-04raring-ringtail-%e3%81%a8-pt3-%e3%81%a7%e3%83%86%e3%83%ac%e3%83%93%e3%82%92%e8%a6%8b%e3%82%8b/</guid>
+        
+        <category>app</category>
+        
+        <category>linux</category>
+        
+        <category>pt3</category>
+        
+        <category>recpt1</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>conkyでファイナンス</title>
+        <description>&lt;p&gt;conkyで市場もチェック。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;jsonと仲良くなるためにjqをインストールします。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;git clone https://github.com/stedolan/jq.git
+cd jq
+autoreconf
+./configure
+make
+sudo make install
+&lt;/pre&gt;
+
+&lt;p&gt;が、コンパイルエラー。&lt;br /&gt;
+面倒なので&lt;a href=&quot;http://stedolan.github.io/jq/download/&quot;&gt;ここから&lt;/a&gt;バイナリーをダウンロードして /usr/bin に。&lt;/p&gt;
+
+&lt;p&gt;~/.conkyrc に追記。&lt;br /&gt;
+20秒毎の更新にしました。&lt;br /&gt;
+大量の銘柄、短い間隔でアクセスはやめましょう。&lt;br /&gt;
+一回のアクセスで指定銘柄すべて取得できないのかな？！&lt;br /&gt;
+リアルタイムなのかな？！&lt;br /&gt;
+fxってギャンブルだよね？？&lt;br /&gt;
+分からないことがたくさんあります。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: plain; title: ; notranslate&quot; title=&quot;&quot;&gt;${color grey}Finance:$color
+ USD/JPY: ${alignr}${execi 20 curl -s http://finance.yahoo.com/webservice/v1/symbols/USDJPY=X/quote?format=json | jq &quot;.list.resources[].resource.fields.price&quot; | sed &quot;s/\&quot;//g&quot;}
+ NIKKEI 225: ${alignr}${execi 20 curl -s http://finance.yahoo.com/webservice/v1/symbols/^N225/quote?format=json | jq &quot;.list.resources[].resource.fields.price&quot; | sed &quot;s/\&quot;//g&quot;}
+ NY Dow: ${alignr}${execi 20 curl -s http://finance.yahoo.com/webservice/v1/symbols/^DJI/quote?format=json | jq &quot;.list.resources[].resource.fields.price&quot; | sed &quot;s/\&quot;//g&quot;}
+&lt;/pre&gt;
+
+</description>
+        <pubDate>Sat, 08 Jun 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/06/08/conky%e3%81%a7%e3%83%95%e3%82%a1%e3%82%a4%e3%83%8a%e3%83%b3%e3%82%b9/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/06/08/conky%e3%81%a7%e3%83%95%e3%82%a1%e3%82%a4%e3%83%8a%e3%83%b3%e3%82%b9/</guid>
+        
+        <category>app</category>
+        
+        <category>finance</category>
+        
+        <category>linux</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>通信しているプロセスを発見する</title>
+        <description>&lt;p&gt;どこと通信しているかを調べる。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;sudo iftop -i eth0&lt;/pre&gt;
+
+&lt;p&gt;誰が通信しているかを調べる。&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;sudo nethogs eth0&lt;/pre&gt;
+
+&lt;p&gt;wifiの人は eth0 じゃなくて wlan0？&lt;/p&gt;
+</description>
+        <pubDate>Sat, 08 Jun 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/06/08/%e9%80%9a%e4%bf%a1%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%e3%82%92%e7%99%ba%e8%a6%8b%e3%81%99%e3%82%8b/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/06/08/%e9%80%9a%e4%bf%a1%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%e3%82%92%e7%99%ba%e8%a6%8b%e3%81%99%e3%82%8b/</guid>
+        
+        <category>command</category>
+        
+        <category>linux</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+      <item>
+        <title>三ツ矢サイダーだと思ったら。。</title>
+        <description>&lt;p&gt;今、コンビニに行って来ました。&lt;br /&gt;
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;晩酌と言えば三ツ矢サイダー。&lt;br /&gt;
+夜ふかしする気まんまん。&lt;br /&gt;
+眠気を吹き飛ばす三ツ矢サイダー。&lt;br /&gt;
+と思って買ったらすっぺぇよ。&lt;br /&gt;
+これ本当に三ツ矢さんの土地から汲んだ水か？！&lt;br /&gt;
+と思ったらccレモン。&lt;br /&gt;
+緑のラインをシュッてのは三ツ矢サイダーだけだろ。&lt;br /&gt;
+飲ませろ、日本品質。&lt;br /&gt;
+&lt;img src=&quot;http://farm8.staticflickr.com/7395/8979262345_49df8a6988_o.jpg&quot; width=&quot;102&quot; height=&quot;286&quot; alt=&quot;2013-06-08-mitsuya-cider&quot; /&gt; &lt;img src=&quot;http://farm4.staticflickr.com/3762/8979328971_4b1f543c68_o.jpg&quot; width=&quot;107&quot; height=&quot;287&quot; alt=&quot;2013-06-08-cc-lemon&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 08 Jun 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/06/08/%e4%b8%89%e3%83%84%e7%9f%a2%e3%82%b5%e3%82%a4%e3%83%80%e3%83%bc%e3%81%a0%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%9f%e3%82%89%e3%80%82%e3%80%82/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/06/08/%e4%b8%89%e3%83%84%e7%9f%a2%e3%82%b5%e3%82%a4%e3%83%80%e3%83%bc%e3%81%a0%e3%81%a8%e6%80%9d%e3%81%a3%e3%81%9f%e3%82%89%e3%80%82%e3%80%82/</guid>
+        
+        
+        <category>ぼやき</category>
+        
+      </item>
+    
+      <item>
+        <title>PT2を挿したubuntuマシンはサスペンド(スリープ)できない！？</title>
+        <description>&lt;p&gt;と友人から。&lt;br /&gt;
+気づけば無料サポートデスクってのはなぜだろう。&lt;br /&gt;
+NIC周りでサスペンドできないことがあって、その時のことを思い出して&lt;/p&gt;
+
+&lt;pre class=&quot;brush: bash; title: ; notranslate&quot; title=&quot;&quot;&gt;echo &#39;SUSPEND_MODULES=&quot;pt1_drv&quot;&#39; &amp;gt;&amp;gt; /etc/pm/config.d/00sleep_module
+&lt;/pre&gt;
+
+&lt;p&gt;で解決しました。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Jun 2013 00:00:00 +0900</pubDate>
+        <link>http://blog.h3x.red//2013/06/07/pt2%e3%82%92%e6%8c%bf%e3%81%97%e3%81%9fubuntu%e3%83%9e%e3%82%b7%e3%83%b3%e3%81%af%e3%82%b5%e3%82%b9%e3%83%9a%e3%83%b3%e3%83%89%e3%82%b9%e3%83%aa%e3%83%bc%e3%83%97%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84/</link>
+        <guid isPermaLink="true">http://blog.h3x.red//2013/06/07/pt2%e3%82%92%e6%8c%bf%e3%81%97%e3%81%9fubuntu%e3%83%9e%e3%82%b7%e3%83%b3%e3%81%af%e3%82%b5%e3%82%b9%e3%83%9a%e3%83%b3%e3%83%89%e3%82%b9%e3%83%aa%e3%83%bc%e3%83%97%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84/</guid>
+        
+        <category>app</category>
+        
+        <category>config</category>
+        
+        <category>linux</category>
+        
+        <category>pt2</category>
+        
+        <category>tv</category>
+        
+        <category>ubuntu</category>
+        
+        
+        <category>コンピュータ</category>
+        
+      </item>
+    
+  </channel>
+</rss>
